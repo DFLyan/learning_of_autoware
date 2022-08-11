@@ -1,9 +1,10 @@
+## 一、前期准备
 sudo apt-get -y install git
 
 git clone https://github.com/autowarefoundation/autoware.git
 cd autoware
 
-## 安装ros
+## 二、安装ros
 ### You will need to add the ROS 2 apt repository to your system. First, make sure that the Ubuntu Universe repository is enabled by checking the output of this command.
 apt-cache policy | grep universe
 
@@ -44,7 +45,7 @@ sudo apt install python3-argcomplete
 再开一个终端：ros2 run demo_nodes_py listene
 
 
-## ROS 2 Dev Tools安装
+## 三、ROS 2 Dev Tools安装
 ### Taken from https://docs.ros.org/en/galactic/Installation/Ubuntu-Development-Setup.html
 sudo apt update && sudo apt install -y \
   build-essential \
