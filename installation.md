@@ -106,7 +106,7 @@ sudo rosdep init
 rosdep update
 ```
 
-## the RMW Implementation安装
+## 四、the RMW Implementation安装
 ### For details: https://docs.ros.org/en/galactic/How-To-Guides/Working-with-multiple-RMW-implementations.html
 ```
 sudo apt update
@@ -119,4 +119,14 @@ sudo apt install ros-${rosdistro}-${rmw_implementation_dashed}
 ### (Optional) You set the default RMW implementation in the ~/.bashrc file.
 ```
 echo '' >> ~/.bashrc && echo "export RMW_IMPLEMENTATION=${rmw_implementation}" >> ~/.bashrc
+```
+
+## 五 pacmod3安装
+```
+# Taken from https://github.com/astuff/pacmod3#installation
+sudo apt install apt-transport-https
+sudo sh -c 'echo "deb [trusted=yes] https://s3.amazonaws.com/autonomoustuff-repo/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/autonomoustuff-public.list'
+sudo apt update
+rosdistro=galactic(这边更新亚马逊源的时候一直连不上，apt-cache search pacmod后发现只有dashing，就先安装这个了)
+sudo apt install ros-${rosdistro}-pacmod3
 ```
