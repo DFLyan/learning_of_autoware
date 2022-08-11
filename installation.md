@@ -121,7 +121,7 @@ sudo apt install ros-${rosdistro}-${rmw_implementation_dashed}
 echo '' >> ~/.bashrc && echo "export RMW_IMPLEMENTATION=${rmw_implementation}" >> ~/.bashrc
 ```
 
-## 五 pacmod3安装
+## 五、 pacmod3安装
 ```
 # Taken from https://github.com/astuff/pacmod3#installation
 sudo apt install apt-transport-https
@@ -130,3 +130,18 @@ sudo apt update
 rosdistro=galactic(这边更新亚马逊源的时候一直连不上，apt-cache search pacmod后发现只有dashing，就先安装这个了)
 sudo apt install ros-${rosdistro}-pacmod3
 ```
+
+## 六、 Autoware Core dependencies安装
+```
+pip3 install gdown
+```
+
+## 七、 Autoware Universe dependencies安装
+```
+sudo apt install geographiclib-tools
+
+# Add EGM2008 geoid grid to geographiclib
+sudo geographiclib-get-geoids egm2008-1
+```
+
+## 
