@@ -39,7 +39,7 @@ sudo apt update
 ```
 ### Desktop Install
 ```
-rosdistro=galactic(这是ubuntu20，18的话eloquent）
+rosdistro=galactic(这是ubuntu20，18的话eloquent)
 installation_type=desktop
 sudo apt install ros-${rosdistro}-${installation_type}
 ```
@@ -110,7 +110,7 @@ rosdep update
 ### For details: https://docs.ros.org/en/galactic/How-To-Guides/Working-with-multiple-RMW-implementations.html
 ```
 sudo apt update
-rosdistro=galactic
+rosdistro=galactic(这是ubuntu20，18的话eloquent)
 rmw_implementation=rmw_cyclonedds_cpp
 rmw_implementation_dashed=$(eval sed -e "s/_/-/g" <<< "${rmw_implementation}")
 sudo apt install ros-${rosdistro}-${rmw_implementation_dashed}
