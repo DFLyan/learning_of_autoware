@@ -160,3 +160,21 @@ sudo apt install golang
 
 ## 九、 cuda、cudnn、tensorrt安装
 由于虚拟机识别不了独立显卡，所以这一步不详细阐述，有需要的，在annaconda的虚拟环境中安装即可
+
+## 十、设置工作区
+### 1. 创建(使用vcstool)
+```
+cd autoware
+mkdir src
+vcs import src < autoware.repos
+```
+### 2. ROS包安装
+```
+source /opt/ros/galactic(这是ubuntu20，18的话eloquent)/setup.bash
+rosdep update
+rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+```
+**这一步可能会出现报错，先安装Gazebo**
+```
+sudo apt-get install gazebo
+```
