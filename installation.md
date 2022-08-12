@@ -1,3 +1,4 @@
+# 所有安装过程总结于[官方教程](https://autowarefoundation.github.io/autoware-documentation/pr-82/installation/autoware/source-installation/)
 ## 一、前期准备
 ```
 sudo apt-get -y install git
@@ -143,5 +144,19 @@ sudo apt install geographiclib-tools
 # Add EGM2008 geoid grid to geographiclib
 sudo geographiclib-get-geoids egm2008-1
 ```
+**这一步会比较慢，如果不行就从输入命令后，出现的网址自己下载下来，然后解压所有文件到‘/usr/share/GeographicLib/geoids’**
 
-## 
+## 八、 pre-commit dependencies安装
+```
+clang_format_version=14.0.6
+pip3 install pre-commit clang-format==${clang_format_version}
+```
+
+# Install Golang (Add Go PPA for shfmt)
+```
+sudo add-apt-repository ppa:longsleep/golang-backports
+sudo apt install golang
+```
+
+## 九、 cuda、cudnn、tensorrt安装
+由于虚拟机识别不了独立显卡，所以这一步不详细阐述，有需要的，在annaconda的虚拟环境中安装即可
