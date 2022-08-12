@@ -86,6 +86,9 @@ sudo apt update && sudo apt install -y \
 
 ### Install some pip packages needed for testing
 ```
+pip install pyyaml
+```
+```
 python3 -m pip install -U \
   flake8-blind-except \
   flake8-builtins \
@@ -100,6 +103,7 @@ python3 -m pip install -U \
   pytest \
   setuptools
 ```
+
 
 ### Initialize rosdep
 ```
