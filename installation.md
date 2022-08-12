@@ -182,3 +182,4 @@ rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 ```
 sudo apt-get install gazebo
 ```
+**如果还报错，那么就是因为管网的安装过程是基于ubuntu20，低于这个版本的时候，安装包的时候可能是版本不匹配，后面就报错了
