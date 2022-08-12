@@ -64,7 +64,7 @@ ros2 run demo_nodes_cpp talker
 
 再开一个终端：
 ```
-ros2 run demo_nodes_py listene
+ros2 run demo_nodes_py listener
 ```
 
 ## 三、ROS 2 Dev Tools安装
