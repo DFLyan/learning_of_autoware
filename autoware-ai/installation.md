@@ -1,4 +1,4 @@
-# ros安装
+# 一、ros安装
 ## 1 设置sources.list
 ```
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -49,3 +49,20 @@ roscore
 rosrun turtlesim turtlesim_node 
 ```
 **有小乌龟节点弹出来就说明ROS安装成功了！**
+
+# 二、autoware安装
+## 1. 依赖安装
+```
+sudo apt update
+sudo apt install -y python-catkin-pkg python-rosdep ros-$ROS_DISTRO-catkin
+sudo apt install -y python3-pip python3-colcon-common-extensions python3-setuptools python3-vcstool
+pip3 install -U setuptools
+```
+## 2. cuda安装（可选择性）
+**细节不阐述，其中需要安装额外包**
+```
+cd && wget https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip #Download Eigen
+mkdir eigen && tar --strip-components=1 -xzvf 3.3.7.tar.gz -C eigen #Decompress
+cd eigen && mkdir build && cd build && cmake .. && make && make install #Build and install
+cd && rm -rf 3.3.7.tar.gz && rm -rf eigen #Remove downloaded and temporary files
+```
