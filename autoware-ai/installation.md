@@ -67,7 +67,7 @@ cd eigen && mkdir build && cd build && cmake .. && make && make install #Build a
 cd && rm -rf 3.3.7.tar.gz && rm -rf eigen #Remove downloaded and temporary files
 ```
 
-## 创建环境
+## 3.创建环境
 ```
 pip install pyyaml
 mkdir -p autoware.ai/src
@@ -81,7 +81,7 @@ rosdepc update
 rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 ```
 
-## 编译
+## 4.编译
 有显卡
 ```
 AUTOWARE_COMPILE_WITH_CUDA=1 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
@@ -91,7 +91,7 @@ AUTOWARE_COMPILE_WITH_CUDA=1 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Releas
 AUTOWARE_COMPILE_WITH_CUDA=0 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
 
-## Demo
+## 5.Demo
 ### 下载数据
 ```
 wget https://autoware-ai.s3.us-east-2.amazonaws.com/sample_moriyama_data.tar.gz
@@ -107,7 +107,7 @@ tar zxfv sample_moriyama_150324.tar.gz
 tar zxfv sample_moriyama_data.tar.gz
 ```
 
-### 运行
+### 6.运行
 ```
 cd autoware.ai
 source install/setup.bash
