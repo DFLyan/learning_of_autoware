@@ -182,13 +182,13 @@ rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 ```
 sudo apt-get install gazebo
 ```
-**如果还报错，那么就是因为管网的安装过程是基于ubuntu20，低于这个版本的时候，安装包的时候可能是版本不匹配，后面就报错了
+**如果还报错，那么就是因为管网的安装过程是基于ubuntu20，低于这个版本的时候，安装包的时候可能是版本不匹配，后面就报错了**
 
-### 3. 编译(使用colcon)
+### 3. 编译(使用colcon)(如果有显卡，AUTOWARE_COMPILE_WITH_CUDA=1，没有显卡，AUTOWARE_COMPILE_WITH_CUDA=0)
 ```
-colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+AUTOWARE_COMPILE_WITH_CUDA=0 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
-**这一步会缺少比较多的python包
+**这一步会缺少比较多的python包**
 ```
 pip install catkin_pkg numpy empy lark
 ```
