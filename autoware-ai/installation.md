@@ -66,3 +66,27 @@ mkdir eigen && tar --strip-components=1 -xzvf 3.3.7.tar.gz -C eigen #Decompress
 cd eigen && mkdir build && cd build && cmake .. && make && make install #Build and install
 cd && rm -rf 3.3.7.tar.gz && rm -rf eigen #Remove downloaded and temporary files
 ```
+
+## 创建环境
+```
+pip install pyyaml
+mkdir -p autoware.ai/src
+cd autoware.ai
+wget -O autoware.ai.repos "https://raw.githubusercontent.com/autowarefoundation/autoware.ai/1.14.0/autoware.ai.repos"
+vcs import src < autoware.ai.repos
+sudo apt install python-pip
+pip install rosdepc
+rosdepc init
+rosdepc update
+rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+```
+
+## 编译
+有显卡
+```
+AUTOWARE_COMPILE_WITH_CUDA=1 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+```
+无显卡
+```
+AUTOWARE_COMPILE_WITH_CUDA=0 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+```
