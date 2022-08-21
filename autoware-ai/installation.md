@@ -19,12 +19,10 @@ sudo apt update
 sudo apt install ros-melodic-desktop-full
 ```
 
-## 5 初始化 rosdep
+## 5 初始化 rosdep(因为是在虚拟环境下进行，所以pip已经安装，并且pip有关的都不用sudo，不然会去系统下寻找)
 ```
-sudo apt update
-sudo apt install python-pip
-sudo pip install rosdepc （该方法源自鱼香ROS）
-sudo rosdepc init 
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple rosdepc
+rosdepc init 
 rosdepc update
 ```
 
