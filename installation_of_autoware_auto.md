@@ -162,7 +162,7 @@ sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt install golang
 ```
 
-## 九、 cuda、cudnn、tensorrt(参考官网安装)[https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html]安装
+## 九、 cuda、cudnn、tensorrt参考[官网](https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html)安装
 由于虚拟机识别不了独立显卡，所以这一步不详细阐述，有需要的，在annaconda的虚拟环境中安装即可
 如果安装：
 ```
