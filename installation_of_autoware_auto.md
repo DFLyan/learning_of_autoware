@@ -162,8 +162,22 @@ sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt install golang
 ```
 
-## 九、 cuda、cudnn、tensorrt安装
+## 九、 cuda、cudnn、tensorrt[参考官网安装]（https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html）安装
 由于虚拟机识别不了独立显卡，所以这一步不详细阐述，有需要的，在annaconda的虚拟环境中安装即可
+如果安装：
+```
+conda install cudatoolkit cudnn
+python3 -m pip install --upgrade setuptools pip
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple nvidia-pyindex
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade nvidia-tensorrt
+```
+验证是否安装成功：
+```
+python3
+>>> import tensorrt
+>>> print(tensorrt.__version__)
+>>> assert tensorrt.Builder(tensorrt.Logger())
+```
 
 ## 十、设置工作区
 ### 1. 创建(使用vcstool)
