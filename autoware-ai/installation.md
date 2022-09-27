@@ -81,7 +81,7 @@ rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 
 ## 4.编译
 ### 4.1 一些bug的处理
-报错gpu_monitor.h
+4.1.1 报错gpu_monitor.h
 ```
 cd /usr/include
 sudo vim nvml.h
@@ -94,6 +94,24 @@ sudo vim nvml.h
  */
 #define nvmlClocksThrottleReasonDisplayClockSetting       0x0000000000000100LL
 ```
+
+4.1.2 anaconda3/lib/libfontconfig.so.1: undefined reference to `FT_Done_MM_Var‘ collect2: error:
+```
+cd /usr/lib/x86_64-linux-gnu
+ll |grep libfontconfig.so.1
+cd ~/anaconda3/lib
+ll | grep libfontconfig.so.1
+```
+可以发现anaconda里和系统里不匹配，所以复制过来修改软连接
+```
+cp /usr/lib/x86_64-linux-gnu/libfontconfig.so.1.10.1 ~/anaconda3/lib/libfontconfig.so.1.10.1
+ls ~/anaconda3/lib/libfontconfig.so*
+rm ~/anaconda3/lib/libfontconfig.so
+rm ~/anaconda3/lib/libfontconfig.so.1
+ ln -s libfontconfig.so.1.10.1 libfontconfig.so.1
+ ln -s libfontconfig.so.1.10.1 libfontconfig.so
+```
+
 ### 4.2 开始编译
 有显卡
 ```
