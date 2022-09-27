@@ -1,4 +1,4 @@
-# 一、ros安装
+# 一、ros安装（所有的环境最好不要在anaconda的环境下安装，不然后面autoware编译的时候会出现一些bug，需要修改软连接）
 ## 1 设置sources.list
 ```
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -80,8 +80,8 @@ rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 ```
 
 ## 4.编译
-### 4.1 一些bug的处理
-4.1.1 报错gpu_monitor.h
+### 4.1 一些bug的处理（其中需要修改软连接的问题基本上都是因为anaconda的安装造成的）
+**4.1.1 报错gpu_monitor.h**
 ```
 cd /usr/include
 sudo vim nvml.h
@@ -95,7 +95,7 @@ sudo vim nvml.h
 #define nvmlClocksThrottleReasonDisplayClockSetting       0x0000000000000100LL
 ```
 
-4.1.2 anaconda3/lib/libfontconfig.so.1: undefined reference to `FT_Done_MM_Var‘ collect2: error:
+**4.1.2 anaconda3/lib/libfontconfig.so.1: undefined reference to `FT_Done_MM_Var‘ collect2: error:**
 ```
 cd /usr/lib/x86_64-linux-gnu
 ll |grep libfontconfig.so.1
@@ -110,6 +110,11 @@ rm ~/anaconda3/lib/libfontconfig.so
 rm ~/anaconda3/lib/libfontconfig.so.1
  ln -s libfontconfig.so.1.10.1 libfontconfig.so.1
  ln -s libfontconfig.so.1.10.1 libfontconfig.so
+```
+**4.1.3 libapr-1.so.0：对‘uuid_generate@UUID_1.0’未定义**
+```
+sudo rm ~/anaconda3/lib/libuuid.so.1
+sudo ln -s /lib/x86_64-linux-gnu/libuuid.so.1 ~/anaconda3/lib/libuuid.so.1
 ```
 
 ### 4.2 开始编译
