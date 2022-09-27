@@ -59,18 +59,18 @@ pip3 install -U setuptools
 ## 2. cuda安装（可选择性）
 **细节不阐述，其中需要安装额外包**
 ```
-cd && wget https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip #Download Eigen
+cd && wget https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.gz #Download Eigen
 mkdir eigen && tar --strip-components=1 -xzvf 3.3.7.tar.gz -C eigen #Decompress
-cd eigen && mkdir build && cd build && cmake .. && make && make install #Build and install
-cd && rm -rf 3.3.7.tar.gz && rm -rf eigen #Remove downloaded and temporary files
+cd eigen && mkdir build && cd build && sudo cmake .. && sudo make && sudo make install #Build and install
+cd && sudo rm -rf 3.3.7.tar.gz && sudo rm -rf eigen #Remove downloaded and temporary files
 ```
 
 ## 3.创建环境
 ```
-pip install pyyaml
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyyaml opencv-python
 mkdir -p autoware.ai/src
 cd autoware.ai
-wget -O autoware.ai.repos "https://raw.githubusercontent.com/autowarefoundation/autoware.ai/1.14.0/autoware.ai.repos"
+wget -O autoware.ai.repos "https://raw.githubusercontent.com/autowarefoundation/autoware/autoware-ai/autoware.ai.repos"
 vcs import src < autoware.ai.repos
 sudo apt install python-pip
 pip install rosdepc
@@ -80,6 +80,21 @@ rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 ```
 
 ## 4.编译
+### 4.1 一些bug的处理
+报错gpu_monitor.h
+```
+cd /usr/include
+sudo vim nvml.h
+```
+1205行加入(1205gg快速到达该行）
+```
+/** GPU clocks are limited by current setting of Display clocks
+ *
+ * @see bug 1997531
+ */
+#define nvmlClocksThrottleReasonDisplayClockSetting       0x0000000000000100LL
+```
+### 4.2 开始编译
 有显卡
 ```
 AUTOWARE_COMPILE_WITH_CUDA=1 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
